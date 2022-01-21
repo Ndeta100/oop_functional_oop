@@ -13,3 +13,17 @@ const user={
 // Bonus
 // Accept refunds
 // Track user history
+
+
+
+const array=[1,2,3]
+function mutateArray(arr){
+   arr.pop()
+}
+mutateArray(array)
+mutateArray(array)
+function mutateArrayNew(arr){
+    arr.forEach(arr=>arr.push(1))
+ }
+ mutateArrayNew(array)
+ mutateArrayNew(array)
