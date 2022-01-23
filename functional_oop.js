@@ -52,3 +52,11 @@ function noGood(num){
     return Math.random(num)
 }
 noGood(4)
+
+// Imperative vs declaarative
+for(let i=0; i<100; i++){
+    console.log(i)
+}
+[1,2,3].forEach(item=>{
+    console.log(item)
+})
