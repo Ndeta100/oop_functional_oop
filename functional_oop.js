@@ -95,3 +95,13 @@ incrementFn()
 incrementFn()
 incrementFn()
 incrementFn()
+
+// Currying
+const multiply=(a,b)=>a*b
+
+multiply(3,4)
+const curriedMultiply=(a)=>(b)=>a*b
+curriedMultiply(4)(6)
+
+// Partial apllication
+const partialMultiplyBy5=multiply.bind(null, 5)
