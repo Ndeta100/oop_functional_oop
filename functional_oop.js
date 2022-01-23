@@ -60,3 +60,38 @@ for(let i=0; i<100; i++){
 [1,2,3].forEach(item=>{
     console.log(item)
 })
+// Immutability
+const obj={name:'andrei'}
+function clone(obj){
+    return {...obj} //pure function
+}
+
+function updateName(obj){
+    const obj2=clone(obj)
+    obj2.name='nana'
+    return obj2
+}
+obj.name='nana'
+const updatedObj=updateName(obj)
+console.log(obj, updatedObj)
+// Higher order functions
+const hof=()=>{
+    function a(){
+        return 5
+    }
+}
+hof(function a(x){return x})
+
+// Closure
+const closure=function(){
+    let count=0
+    function increment(){
+        return count++
+    }
+}
+closure()
+const incrementFn=closure()
+incrementFn()
+incrementFn()
+incrementFn()
+incrementFn()
