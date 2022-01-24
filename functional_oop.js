@@ -5,6 +5,53 @@ const user={
     cart:[],
     purchase:[]
 }
+const amazonHistory=[]
+const compose1=(f,g)=>(...args)=>f(g(...args))
+purchaseItem(
+    emptyCart,
+    buyItem,
+    applyTax,
+    addItemToCart
+)(user, {name:'laptop', price:400})
+
+const  purchaseItem=(...fns)=>fns.reduce(compose1)
+
+function addItemToCart(user, item){
+    amazonHistory.push(user)
+    const updatedCart=user.cart.concat(item)
+    return Object.assign({}, user, {cart:updatedCart})
+}
+
+function applyTax(user){
+    amazonHistory.push(user)
+
+    const {cart}=user
+    const taxRate=1.3
+    const updatedCart=cart.map(item=>{
+        return {
+            name:item.name,
+            price:item.price
+        }
+    })
+    Object.assign({}, user, {cart:updatedCart})
+}
+function buyItem(user){
+    amazonHistory.push(user)
+
+    Object.assign({}, user, {purchase:user.cart})
+}
+function emptyCart(user){
+    amazonHistory.push(user)
+
+    Object.assign({}, user, {cart:[]})
+}
+
+function refundItem(user){
+
+}
+function getUserState(user){
+
+}
 // Implement a cart  feature
 // 1. Add items to cart.
 // 2.Add 3% tax to item in cart
@@ -107,7 +154,7 @@ curriedMultiply(4)(6)
 const partialMultiplyBy5=multiply.bind(null, 5)
 
 
-// Coding interview questions for data structures and algorithms
+
 
 // caching 
 function addTo80(num){
@@ -134,3 +181,5 @@ const multiplyBy3=(num)=> num*3
 const makePositive=(num)=>Math.abs(num)
 const multiplyBy3AndAboslute=compose(multiplyBy3, makePositive)
 multiplyBy3AndAboslute(-50)
+
+// Arity, It simply means the number of parameters a function takes
