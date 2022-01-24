@@ -105,3 +105,26 @@ curriedMultiply(4)(6)
 
 // Partial apllication
 const partialMultiplyBy5=multiply.bind(null, 5)
+
+
+// Coding interview questions for data structures and algorithms
+
+// caching 
+function addTo80(num){
+    console.log('Long time')
+    return num +80
+}
+addTo80(5)
+addTo80(5)
+
+let cache={}
+function memoizedAddTo80(num){
+if(num in cache){
+    return cache.num
+}else{
+    console.log('long time')
+    cache.num=num+80
+    return cache.num
+}
+
+}
